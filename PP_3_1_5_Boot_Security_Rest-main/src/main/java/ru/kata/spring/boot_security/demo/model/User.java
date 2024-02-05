@@ -28,10 +28,10 @@ public class User implements UserDetails {
     private long id;
 
     @Column(name = "username", unique = true)
-    @NotNull
+    @NotEmpty
     private String username;
     @Column(name = "lastName")
-    @NotNull
+    @NotEmpty
     private String lastName;
     @Column(name = "age")
     @Min(0)
