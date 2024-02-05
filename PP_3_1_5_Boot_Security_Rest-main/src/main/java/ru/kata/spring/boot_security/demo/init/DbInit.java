@@ -45,7 +45,7 @@ public class DbInit implements ApplicationListener<ContextRefreshedEvent> {
         userRoles.add(role1);
 
         User admin = new User();
-        admin.setPassword(passwordEncoder.encode("123"));
+        admin.setPassword(passwordEncoder.encode("12345"));
         admin.setRoles(adminRoles);
         admin.setUsername("admin");
         admin.setLastName("admin");
@@ -54,7 +54,7 @@ public class DbInit implements ApplicationListener<ContextRefreshedEvent> {
         userRepository.save(admin);
 
         User user = new User();
-        user.setPassword(passwordEncoder.encode("123"));
+        user.setPassword(passwordEncoder.encode("12345"));
         user.setRoles(userRoles);
         user.setUsername("user");
         user.setLastName("user");

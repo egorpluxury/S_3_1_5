@@ -9,6 +9,7 @@ import ru.kata.spring.boot_security.demo.model.User;
 import ru.kata.spring.boot_security.demo.service.RoleService;
 import ru.kata.spring.boot_security.demo.service.UserService;
 
+import javax.validation.*;
 import java.util.List;
 
 @RestController
@@ -23,6 +24,7 @@ public class AdminRestController {
         this.roleService = roleService;
 
     }
+
     @GetMapping("/getRoles")
     public List<Role> getRoles() {
         return roleService.getListRoles();
@@ -36,16 +38,16 @@ public class AdminRestController {
 
     @GetMapping("/users/{id}")
     public ResponseEntity<User> showUser(@PathVariable("id") Long id) {
-        return new ResponseEntity<> (userService.getById(id), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getById(id), HttpStatus.OK);
     }
 
     @GetMapping("/userAuth")
     public ResponseEntity<User> showAuthUser() {
-        return new ResponseEntity<> (userService.getCurrentUser(), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getCurrentUser(), HttpStatus.OK);
     }
 
     @PostMapping("/newAddUser")
-    public ResponseEntity<Void> saveNewUser(@RequestBody User user) {
+    public ResponseEntity<Void> saveNewUser(@Valid @RequestBody User user) {
         userService.add(user);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -57,7 +59,7 @@ public class AdminRestController {
     }
 
     @PatchMapping("/users/{id}")
-    public ResponseEntity<Void> userSaveEdit(@RequestBody User user, @PathVariable Long id ) {
+    public ResponseEntity<Void> userSaveEdit(@Valid @RequestBody User user, @PathVariable Long id) {
         user.setId(id);
         userService.update(user);
         return new ResponseEntity<>(HttpStatus.OK);

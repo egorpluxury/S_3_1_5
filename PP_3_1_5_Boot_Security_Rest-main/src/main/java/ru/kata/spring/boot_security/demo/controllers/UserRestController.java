@@ -18,9 +18,10 @@ public class UserRestController {
     public UserRestController(UserService userService) {
         this.userService = userService;
     }
+
     @GetMapping
     public ResponseEntity<User> showUser() {
-        return new ResponseEntity<> (userService.getCurrentUser(), HttpStatus.OK);
+        return new ResponseEntity<>(userService.getCurrentUser(), HttpStatus.OK);
     }
 
 }

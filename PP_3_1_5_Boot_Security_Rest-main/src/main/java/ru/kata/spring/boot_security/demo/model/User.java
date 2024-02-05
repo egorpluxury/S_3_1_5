@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,15 +28,21 @@ public class User implements UserDetails {
     private long id;
 
     @Column(name = "username", unique = true)
+    @NotNull
     private String username;
     @Column(name = "lastName")
+    @NotNull
     private String lastName;
     @Column(name = "age")
+    @Min(0)
+    @Max(128)
     private int age;
 
     @Column(name = "password")
+    @Size(min = 3)
     private String password;
     @Column(name = "email")
+    @Email
     private String email;
 
 
@@ -45,7 +52,6 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles = new ArrayList<>();
-
 
 
     public User() {
@@ -74,7 +80,8 @@ public class User implements UserDetails {
         this.lastName = lastName;
         this.age = age;
         this.password = password;
-        this.email = email;this.roles = roles;
+        this.email = email;
+        this.roles = roles;
 
     }
 
@@ -156,6 +163,7 @@ public class User implements UserDetails {
                 ", email='" + email + '\'' +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

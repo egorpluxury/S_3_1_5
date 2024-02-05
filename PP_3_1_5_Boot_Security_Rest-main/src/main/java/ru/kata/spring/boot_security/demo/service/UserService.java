@@ -10,13 +10,14 @@ import java.util.Optional;
 
 public interface UserService {
     void add(User user);
-    List<User> getAllUsers();
-    void delete(Long id);
-    void update(User user);
-    User getById(Long id);
-    Optional<User> getByUsername(String userName);
 
-    UserDetails loadUserByUsername(String firstName) throws UsernameNotFoundException;
+    List<User> getAllUsers();
+
+    void delete(Long id);
+
+    void update(User user);
+
+    User getById(Long id);
 
     User getCurrentUser();
 }

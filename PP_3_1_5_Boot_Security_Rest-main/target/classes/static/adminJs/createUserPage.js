@@ -1,6 +1,6 @@
 const form_new = document.getElementById('formForNewUser');
 const create_btn = document.getElementById('closeCreateButton');
-/*ААААААААААААААААААА*/ const user_table_tab= document.getElementById('user_table-tab');
+const user_table_tab= document.getElementById('user_table-tab');
 const rolesSelect = document.querySelector('#roles');
 form_new.addEventListener('submit', addNewUser);
 

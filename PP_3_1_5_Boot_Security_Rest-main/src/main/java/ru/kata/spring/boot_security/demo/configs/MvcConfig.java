@@ -1,7 +1,6 @@
 package ru.kata.spring.boot_security.demo.configs;
 
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.context.annotation.*;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -13,9 +12,4 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/admins").setViewName("admin");
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**", "/js/**")
-                .addResourceLocations("classpath:/static/css/", "classpath:/static/js/");
-    }
 }
