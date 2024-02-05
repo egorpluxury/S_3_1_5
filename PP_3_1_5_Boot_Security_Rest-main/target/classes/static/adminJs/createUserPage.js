@@ -40,7 +40,7 @@ async function addNewUser(event) {
 
         getAdminPage();
 
-        /*ААААААААААААААААААА*/ user_table_tab.click();
+         user_table_tab.click();
 
         var triggerTabList = [].slice.call(document.querySelectorAll('#Admin_panel-tab a'))
         triggerTabList.forEach(function (triggerEl) {
